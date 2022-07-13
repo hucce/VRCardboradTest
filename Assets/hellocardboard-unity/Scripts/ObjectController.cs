@@ -86,7 +86,15 @@ public class ObjectController : MonoBehaviour
     /// </summary>
     public void OnPointerEnter()
     {
+        Manager.instance.Fire(true);
+
+        Debug.Log("바라보기");
         SetMaterial(true);
+    }
+
+    IEnumerator Fire()
+    {
+        yield return StartCoroutine(Manager.instance.Lookat());
     }
 
     /// <summary>
@@ -94,6 +102,7 @@ public class ObjectController : MonoBehaviour
     /// </summary>
     public void OnPointerExit()
     {
+        Manager.instance.Fire(false);
         SetMaterial(false);
     }
 
