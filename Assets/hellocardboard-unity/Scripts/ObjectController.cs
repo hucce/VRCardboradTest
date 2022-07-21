@@ -87,14 +87,7 @@ public class ObjectController : MonoBehaviour
     public void OnPointerEnter()
     {
         Manager.instance.Fire(true);
-
-        Debug.Log("바라보기");
         SetMaterial(true);
-    }
-
-    IEnumerator Fire()
-    {
-        yield return StartCoroutine(Manager.instance.Lookat());
     }
 
     /// <summary>
