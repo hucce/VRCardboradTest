@@ -59,4 +59,34 @@ public class Manager : MonoBehaviour
             yield return new WaitForSeconds(shootTime);
         }
     }
+
+    public List<GameObject> zombies = new List<GameObject>();
+
+    public GameObject gameUI = null;
+    public Text gameText = null;
+
+    public void CheckZombies()
+    {
+        bool allZombiesDead = true;
+        for (int i =0; i<zombies.Count; i++)
+        {
+            if (zombies[i].GetComponent<Zombie>().dead == false)
+            {
+                allZombiesDead = false;
+                break;
+            }
+        }
+
+        if (allZombiesDead)
+        {
+            gameUI.SetActive(true);
+            gameText.text = "Game Clear";
+        }
+    }
+
+    public void GameOver()
+    {
+        gameUI.SetActive(true);
+        gameText.text = "Game Over";
+    }
 }

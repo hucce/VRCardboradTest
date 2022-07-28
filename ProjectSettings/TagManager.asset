@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Bullet
   - ZombieArm
+  - Zombie
   layers:
   - Default
   - TransparentFX

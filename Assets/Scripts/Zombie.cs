@@ -9,6 +9,7 @@ public class Zombie : MonoBehaviour
     public float attackDistance = 5f;
     public int zombieHP = 100;
     public int zombieDamage = 10;
+    public bool dead = false;
 
     // Start is called before the first frame update
     void Start()
@@ -47,6 +48,7 @@ public class Zombie : MonoBehaviour
             {
                 GetComponent<NavMeshAgent>().enabled = false;
                 GetComponent<Animator>().SetTrigger("Dead");
+                dead = true;
             }
         }
     }
