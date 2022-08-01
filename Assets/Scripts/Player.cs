@@ -8,10 +8,10 @@ public class Player : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        Debug.Log(collision.gameObject.name);
         if(collision.gameObject.tag == "ZombieArm")
         {
             playerHP -= collision.transform.parent.GetComponent<Zombie>().zombieDamage;
+            Manager.instance.HPUI(playerHP);
             if(playerHP <= 0)
             {
                 Manager.instance.GameOver();

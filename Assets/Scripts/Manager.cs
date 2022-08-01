@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Manager : MonoBehaviour
 {
@@ -64,7 +65,7 @@ public class Manager : MonoBehaviour
 
     public GameObject gameUI = null;
     public Text gameText = null;
-
+    
     public void CheckZombies()
     {
         bool allZombiesDead = true;
@@ -88,5 +89,19 @@ public class Manager : MonoBehaviour
     {
         gameUI.SetActive(true);
         gameText.text = "Game Over";
+        StartCoroutine(CoGameOver());
+    }
+
+    private IEnumerator CoGameOver()
+    {
+        yield return new WaitForSeconds(2f);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    public Text hpText = null;
+
+    public void HPUI(int _hp)
+    {
+        hpText.text = _hp.ToString();
     }
 }
